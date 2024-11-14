@@ -1,5 +1,3 @@
-" hexa.vim 
-
 command! Hexa call ConvertHexToChar()
 
 function! ConvertHexToChar()
@@ -13,6 +11,12 @@ function! ConvertHexToChar()
 endfunction
 
 function! HexToChar(hex)
-    return nr2char(str2nr(a:hex, 16))
+    let num = str2nr(a:hex, 16)
+
+    if num >= 0 && num <= 127
+        return nr2char(num)
+    else
+        return a:hex  
+    endif
 endfunction
 
